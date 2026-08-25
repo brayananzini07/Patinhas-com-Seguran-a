@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS patinhas_com_segurança;
+
+USE patinhas_com_segurança;
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE animais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especie VARCHAR(50) NOT NULL,
+    raca VARCHAR(50) NOT NULL,
+    idade INT NOT NULL,
+    CLIENTE_ID INT NOT NULL,
+
+    CONSTRAINT FK_ANIMAL_CLIENTE
+    FOREIGN KEY (cliente_id) 
+    REFERENCES clientes(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
